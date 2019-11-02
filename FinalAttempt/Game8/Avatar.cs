@@ -18,12 +18,14 @@ namespace Game8
         int maxJumpHeight;
         Animation Travel;
         Animation CurrentAnimation;
+        bool isDead;
 
         public Avatar(GraphicsDevice graphicsDevice)
         {
             isJumping = false;
             heightJumped = 0;
             maxJumpHeight = 100;
+            isDead = false;
 
             /*
             THIS IS STUFF FROM THE EXAMPLE THAT IDK HOW TO DEAL WITH
@@ -42,14 +44,14 @@ namespace Game8
             Travel.AddFrame(new Rectangle(100, 40, 30, 30), TimeSpan.FromSeconds(.08));
             Travel.AddFrame(new Rectangle(67, 40, 30, 30), TimeSpan.FromSeconds(.08));
             Travel.AddFrame(new Rectangle(35, 40, 30, 30), TimeSpan.FromSeconds(.08));
-						Travel.AddFrame(new Rectangle (3, 40, 30, 30), TimeSpan.FromSeconds (.08));
-						Travel.AddFrame(new Rectangle(170, 40, 40, 30), TimeSpan.FromSeconds(.08));
+            Travel.AddFrame(new Rectangle(3, 40, 30, 30), TimeSpan.FromSeconds(.08));
+            Travel.AddFrame(new Rectangle(170, 40, 40, 30), TimeSpan.FromSeconds(.08));
 
 
         }
 
         public Rectangle BoundingBox => new Rectangle();
-        public bool isMoving => true;
+        public bool HasResponse => true;
 
         public void Jump()
         {
@@ -78,7 +80,7 @@ namespace Game8
                 heightJumped = heightJumped - 10;
             }
 
-            CurrentAnimation = JumpUp;
+            CurrentAnimation = Travel;
             CurrentAnimation.Update(gametime);
         }
 
@@ -89,7 +91,14 @@ namespace Game8
 
         public void CollisionResponse(bool isItem)
         {
-
+            if (!isItem)
+            {
+                isDead = true;
+            }
+        }
+        public bool IsDead()
+        {
+            return isDead;
         }
     }
 }
