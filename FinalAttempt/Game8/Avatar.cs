@@ -10,23 +10,41 @@ namespace Game8
 {
     class Avatar
     {
-				bool isJumping;
+		bool isJumping;
+        int heightJumped;
+        int maxJumpHeight;
 
         public Avatar()
         {
-						isJumping = false;
+			isJumping = false;
+            heightJumped = 0;
+            maxJumpHeight = 100;
+
         }
 
-				public void Jump(){
-						if(!isJumping){
+		public void Jump(){
+			if(!isJumping){
 
-						}
-						isJumping = true;
-				}
+			}
+			isJumping = true;
+		}
 
-				public void Update(){
-					
-				}
+		public void Update(){
+            if (isJumping)
+            {
+                if (heightJumped < maxJumpHeight)
+                {
+                    heightJumped = heightJumped + 10;
+                }
+                else
+                {
+                    isJumping = false;
+                }
+            }else if(!isJumping && heightJumped > 0)
+            {
+                heightJumped = heightJumped - 10;
+            }
+		}
 
 
     }
