@@ -16,7 +16,7 @@ namespace Game8
         bool isJumping;
         int heightJumped;
         int maxJumpHeight;
-        Animation JumpUp;
+        Animation Travel;
         Animation CurrentAnimation;
 
         public Avatar(GraphicsDevice graphicsDevice)
@@ -37,13 +37,14 @@ namespace Game8
           }
             */
 
-            JumpUp = new Animation();
-            JumpUp.AddFrame(new Rectangle(50, 100, 20, 20), TimeSpan.FromSeconds(.2));
-            JumpUp.AddFrame(new Rectangle(50, 90, 20, 20), TimeSpan.FromSeconds(.2));
-            JumpUp.AddFrame(new Rectangle(50, 80, 20, 20), TimeSpan.FromSeconds(.2));
-            JumpUp.AddFrame(new Rectangle(50, 70, 20, 20), TimeSpan.FromSeconds(.1));
-            JumpUp.AddFrame(new Rectangle(50, 85, 20, 20), TimeSpan.FromSeconds(.2));
-            JumpUp.AddFrame(new Rectangle(50, 100, 20, 20), TimeSpan.FromSeconds(.2));
+            Travel = new Animation();
+            Travel.AddFrame(new Rectangle(170, 40, 40, 30), TimeSpan.FromSeconds(.08));
+            Travel.AddFrame(new Rectangle(100, 40, 30, 30), TimeSpan.FromSeconds(.08));
+            Travel.AddFrame(new Rectangle(67, 40, 30, 30), TimeSpan.FromSeconds(.08));
+            Travel.AddFrame(new Rectangle(35, 40, 30, 30), TimeSpan.FromSeconds(.08));
+						Travel.AddFrame(new Rectangle (3, 40, 30, 30), TimeSpan.FromSeconds (.08));
+						Travel.AddFrame(new Rectangle(170, 40, 40, 30), TimeSpan.FromSeconds(.08));
+
 
         }
 
