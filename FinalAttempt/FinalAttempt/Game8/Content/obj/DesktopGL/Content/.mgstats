@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/beach.png","C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/bin/DesktopGL/Content/beach.xnb","TextureProcessor","Texture2DContent",31784,5580085,0.4712209
+"C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/coconut.png","C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/bin/DesktopGL/Content/coconut.xnb","TextureProcessor","Texture2DContent",2231,220885,0.0219147
+"C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/crab.png","C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/bin/DesktopGL/Content/crab.xnb","TextureProcessor","Texture2DContent",8621,1000085,0.0329115
