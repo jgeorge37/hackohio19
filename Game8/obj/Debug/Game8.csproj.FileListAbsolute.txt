@@ -18,8 +18,11 @@ C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\obj\Debug\Game8.csproj.CopyCom
 C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\obj\Debug\Game8.exe
 C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\obj\Debug\Game8.pdb
 C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\crab.xnb
-C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\charmander_grid2.xnb
 C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\palm.xnb
 C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\NewBackground.xnb
 C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\coconut.xnb
 C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\Font.xnb
+C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\charmeleon.xnb
+C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\charizard.xnb
+C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\starting_avatar.xnb
+C:\Users\Annalise\Source\Repos\FinalAttempt\Game8\bin\DesktopGL\AnyCPU\Debug\Content\seagull.xnb

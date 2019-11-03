@@ -28,7 +28,7 @@ namespace Game8.Stuff
             Scale = scale;
             taken = false;
         }
-        public Rectangle BoundingBox => new Rectangle(currentPosition, 240 - (int)(texture.Width * Scale), (int)(texture.Width * Scale), (int)(texture.Height * Scale));
+        public Rectangle BoundingBox => new Rectangle(currentPosition, 267 - (int)(texture.Height * Scale), (int)(texture.Width * Scale), (int)(texture.Height * Scale));
         public bool HasResponse => true;
         public bool isVisible => !taken;
         public void Draw(SpriteBatch spriteBatch)
@@ -43,7 +43,7 @@ namespace Game8.Stuff
             // IDK IF THERE ARE BOOLEANS I SHOULD cCHECK
             if (currentPosition > -texture.Width)
             {
-                currentPosition = currentPosition - 4;
+                currentPosition = currentPosition - 6;
             }
             else
             {
@@ -60,9 +60,16 @@ namespace Game8.Stuff
                 }
             }
         }
-        public void CollisionResponse(bool isItem)
+        public void CollisionResponse(bool isObstacle)
         {
-            taken = true;
+            if (isObstacle)
+            {
+                currentPosition = 800;
+            }
+            else
+            {
+                taken = true;
+            }
         }
     }
 }

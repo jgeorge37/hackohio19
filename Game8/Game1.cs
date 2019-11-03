@@ -61,24 +61,29 @@ namespace Game8
 
             // add all the necessary sprites
             this.background = Content.Load<Texture2D>("NewBackground");
-            Texture2D avatar_img = Content.Load<Texture2D>("charmander_grid2");
+            Texture2D avatar_img = Content.Load<Texture2D>("starting_avatar");
             Texture2D block_img = Content.Load<Texture2D>("crab");
             Texture2D coconut_img = Content.Load<Texture2D>("coconut");
+            Texture2D seagull = Content.Load<Texture2D>("seagull");
             Texture2D palm_img = Content.Load<Texture2D>("palm");
+            Texture2D charmeleon = Content.Load<Texture2D>("charmeleon");
+            Texture2D charizard = Content.Load<Texture2D>("charizard");
 
             font = Content.Load<SpriteFont>("Font");
 
             //add the objects with their texture
-            avatar = new Avatar(GraphicsDevice, avatar_img, 1.5);
+            avatar = new Avatar(GraphicsDevice, avatar_img, charmeleon, charizard, 1.5);
             coco = new Items(coconut_img, 1, 0.3);
             allItems.Add(coco);
-            allObstacles.Add(new Obstacles(block_img, 2, 0.3));
-            allObstacles.Add(new Obstacles(palm_img, 0.5, 1));
+            allObstacles.Add(new Obstacles(block_img, 2, 0.3, 0));
+            allObstacles.Add(new Obstacles(palm_img, 0.5, 1, 0));
+            allObstacles.Add(new Obstacles(seagull, 1.5, 0.3, 1));
             //collision initialization
             gridSquare = new GridSquares(avatar);
             gridSquare.AddCollidable(allItems[0]);
             gridSquare.AddCollidable(allObstacles[0]);
             gridSquare.AddCollidable(allObstacles[1]);
+            gridSquare.AddCollidable(allObstacles[2]);
 
 
             //add commands to the controller
@@ -105,6 +110,11 @@ namespace Game8
 
             LoadContent();
 
+        }
+        public void LevelUpScreen(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            GraphicsDevice.Clear(Color.MonoGameOrange);
+            
         }
 
         /// <summary>
@@ -156,7 +166,11 @@ namespace Game8
             }
             avatar.Draw(spriteBatch);
             spriteBatch.DrawString(font, "Distance: " + avatar.PlayerPoints, new Vector2(0, 0), Color.Black);
-            spriteBatch.DrawString(font, "Coconuts: " + avatar.PlayerCoconuts, new Vector2(0, 20), Color.Black);
+            spriteBatch.DrawString(font, "Coconut Points: " + avatar.PlayerCoconuts, new Vector2(0, 20), Color.Black);
+            if (avatar.PlayerCoconuts == 30)
+            {
+                LevelUpScreen(gameTime, spriteBatch);
+            }
             //Draw legend
             spriteBatch.End();
 

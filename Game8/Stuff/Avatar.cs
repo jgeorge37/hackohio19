@@ -150,11 +150,28 @@ namespace Game8.Stuff
                 heightJumped = 0;
             }
         }
-
+        public void takeDamage()
+        {
+            if (currentTexture == texture3)
+            {
+                currentTexture = texture2;
+                charizardCanFly = false;
+                heightJumped = 0;
+            }
+            else if (currentTexture == texture2)
+            {
+                currentTexture = texture1;
+                heightJumped = 0;
+            }else if(currentTexture == texture1)
+            {
+                isDead = true;
+            }
+        }
         public void CollisionResponse(bool isItem)
         {
             if (!isItem)
             {
+                //takeDamage();
                 isDead = true;
             }
             else

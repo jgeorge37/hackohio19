@@ -4,14 +4,20 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/charmander_grid2.png</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/charizard.png</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/charmeleon.png</File>
     <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/coconut.png</File>
     <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/crab.png</File>
     <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/Font.spritefont</File>
     <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/NewBackground.png</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/seagull.png</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/starting_avatar.png</File>
     <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/Webp.net-resizeimage.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -17,16 +17,18 @@ namespace Game8.Stuff
         bool waiting;
         int currentPosition;
         double Scale;
+        int Sky;
 
-        public Obstacles(Texture2D tx, double x, double scale)
+        public Obstacles(Texture2D tx, double x, double scale, int sky)
         {
             delayTime = x;
             texture = tx;
             currentPosition = 800;
             Scale = scale;
+            Sky = sky;
 
         }
-        public Rectangle BoundingBox => new Rectangle(currentPosition, 267 - (int)(texture.Width *Scale), (int)(texture.Width* Scale), (int)(texture.Height * Scale));
+        public Rectangle BoundingBox => new Rectangle(currentPosition, 348 - (int)(texture.Height *Scale) - 250*Sky, (int)(texture.Width* Scale), (int)(texture.Height * Scale));
         public bool HasResponse => false;
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -38,7 +40,7 @@ namespace Game8.Stuff
             // IDK IF THERE ARE BOOLEANS I SHOULD cCHECK
             if (currentPosition > -(int)texture.Width*Scale)
             {
-                currentPosition = currentPosition - 4;
+                currentPosition = currentPosition - 6;
             }
             else
             {

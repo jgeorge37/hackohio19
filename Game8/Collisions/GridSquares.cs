@@ -40,7 +40,7 @@ namespace Game8.Collisions
                 {
                     Avatar.CollisionResponse(true);
                     items[j].CollisionResponse(false);
-                    Debug.WriteLine("collide with item");
+                    //Debug.WriteLine("collide with item");
                     //items.RemoveAt(j);
                 }
             }
@@ -52,6 +52,13 @@ namespace Game8.Collisions
                     Avatar.CollisionResponse(false);
                     //Debug.WriteLine("collide with obstacle");
                     //obstacles.RemoveAt(j);
+                }
+                for(int i = 0; i < items.Count; i++)
+                {
+                    if (obstacles[j].BoundingBox.Intersects(items[i].BoundingBox))
+                    {
+                        items[i].CollisionResponse(true);
+                    }
                 }
             }
         }
