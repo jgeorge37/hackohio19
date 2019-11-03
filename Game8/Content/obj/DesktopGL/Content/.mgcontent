@@ -4,9 +4,9 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/beach.png</File>
-    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/coconut.png</File>
-    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/crab.png</File>
+    <File>/Users/jinggeorge/Desktop/hackohio19/Game8/Content/beach.png</File>
+    <File>/Users/jinggeorge/Desktop/hackohio19/Game8/Content/coconut.png</File>
+    <File>/Users/jinggeorge/Desktop/hackohio19/Game8/Content/crab.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
