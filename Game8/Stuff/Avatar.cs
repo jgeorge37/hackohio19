@@ -74,22 +74,23 @@ namespace Game8.Stuff
         {
             isJumping = true;
         }
-        public void Fly(bool up)
-        {
-            if (up)
-            {
-                this.heightJumped = heightJumped - 5;
-            }
-            else
-            {
-                this.heightJumped = heightJumped + 5;
-            }
-        }
         public void Update(GameTime gametime)
         {
-            if (charizardCanFly && isJumping)
+            if (charizardCanFly)
             {
-                Fly()
+                if(heightJumped == 0 && isJumping)
+                {
+                    velocity = 6;
+                    isJumping = false;
+                }else if(heightJumped == 348 - (int)(currentTexture.Height * Scale) && isJumping)
+                {
+                    velocity = -6;
+                    isJumping = false;
+                }else if(heightJumped == 0 || heightJumped == 348 - (int)(currentTexture.Height * Scale))
+                {
+                    velocity = 0;
+                }
+                heightJumped = heightJumped + velocity;
             }
             else
             {
@@ -97,7 +98,7 @@ namespace Game8.Stuff
                 {
                     if (heightJumped < maxJumpHeight)
                     {
-                        velocity = 7;
+                        heightJumped = heightJumped + 7;
                     }
                     else
                     {
@@ -106,7 +107,7 @@ namespace Game8.Stuff
                 }
                 else if (!isJumping && heightJumped > 0)
                 {
-                    velocity = - 5;
+                    heightJumped = heightJumped - 5;
                 }
             }
             CurrentAnimation = Travel;
@@ -115,7 +116,6 @@ namespace Game8.Stuff
             {
                 this.PlayerPoints = PlayerPoints + 10;
             }
-            heightJumped = heightJumped + velocity;
         }
 
         public void Draw(SpriteBatch spriteBatch)
