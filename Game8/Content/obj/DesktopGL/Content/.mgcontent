@@ -4,13 +4,19 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/Users/jinggeorge/Desktop/hackohio19/Game8/Content/beach.png</File>
-    <File>/Users/jinggeorge/Desktop/hackohio19/Game8/Content/coconut.png</File>
-    <File>/Users/jinggeorge/Desktop/hackohio19/Game8/Content/crab.png</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/charmander_grid2.png</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/coconut.png</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/crab.png</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/Font.spritefont</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/NewBackground.png</File>
+    <File>C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/Webp.net-resizeimage.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>palm.png</File>
   </DestFiles>
 </SourceFileCollection>
