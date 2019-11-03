@@ -19,13 +19,15 @@ namespace Game8
         Animation Travel;
         Animation CurrentAnimation;
         bool isDead;
+				Texture2D texture;
 
-        public Avatar(GraphicsDevice graphicsDevice)
+        public Avatar(GraphicsDevice graphicsDevice, Texture2D tx)
         {
             isJumping = false;
             heightJumped = 0;
             maxJumpHeight = 100;
             isDead = false;
+						texture = tx;
 
             /*
             THIS IS STUFF FROM THE EXAMPLE THAT IDK HOW TO DEAL WITH
@@ -86,7 +88,7 @@ namespace Game8
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+					spriteBatch.Draw(texture, new Rectangle(30, 200, 30, 40), Color.White);
         }
 
         public void CollisionResponse(bool isItem)

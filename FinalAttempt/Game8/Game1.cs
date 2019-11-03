@@ -15,7 +15,8 @@ namespace Game8
         SceneryBatch sceneryMaster;
         SpriteBatch spriteBatch;
         Controller controller;
-        
+        Texture2D coconut_img;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -31,7 +32,7 @@ namespace Game8
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
+
 
             base.Initialize();
         }
@@ -50,7 +51,7 @@ namespace Game8
             controller.AddKey(Keys.Space, new JumpCommand(this));
 
             // TODO: use this.Content to load your game content here
-            Texture2D coconut_img = Content.Load<Texture2D>("coconut");
+            coconut_img = Content.Load<Texture2D>("coconut");
         }
 
         /// <summary>
