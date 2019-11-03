@@ -1,4 +1,7 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"/Users/jinggeorge/Desktop/hackohio19/Game8/Content/beach.png","/Users/jinggeorge/Desktop/hackohio19/Game8/Content/bin/DesktopGL/Content/beach.xnb","TextureProcessor","Texture2DContent",31784,5580085,0.798177
-"/Users/jinggeorge/Desktop/hackohio19/Game8/Content/coconut.png","/Users/jinggeorge/Desktop/hackohio19/Game8/Content/bin/DesktopGL/Content/coconut.xnb","TextureProcessor","Texture2DContent",2231,220885,0.019675
-"/Users/jinggeorge/Desktop/hackohio19/Game8/Content/crab.png","/Users/jinggeorge/Desktop/hackohio19/Game8/Content/bin/DesktopGL/Content/crab.xnb","TextureProcessor","Texture2DContent",8621,1000085,0.162427
+"C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/charmander_grid2.png","C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/bin/DesktopGL/Content/charmander_grid2.xnb","TextureProcessor","Texture2DContent",652,2389,0.1117029
+"C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/coconut.png","C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/bin/DesktopGL/Content/coconut.xnb","TextureProcessor","Texture2DContent",410,95285,0.1207062
+"C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/crab.png","C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/bin/DesktopGL/Content/crab.xnb","TextureProcessor","Texture2DContent",9810,99285,0.1047215
+"C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/Font.spritefont","C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/bin/DesktopGL/Content/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21521,0.3049764
+"C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/NewBackground.png","C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/bin/DesktopGL/Content/NewBackground.xnb","TextureProcessor","Texture2DContent",4818,1536085,0.1426425
+"C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/Webp.net-resizeimage.png","C:/Users/Annalise/Source/Repos/FinalAttempt/Game8/Content/bin/DesktopGL/Content/palm.xnb","TextureProcessor","Texture2DContent",3965,11701,0.1097057

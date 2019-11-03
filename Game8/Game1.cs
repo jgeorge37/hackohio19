@@ -19,10 +19,12 @@ namespace Game8
         Avatar avatar;
         Items coco;
         Obstacles crab;
+        Obstacles palm;
         List<Items> allItems;
         List<Obstacles> allObstacles;
         Texture2D background;
         GridSquares gridSquare;
+        SpriteFont font;
 
 
         public Game1()
@@ -58,21 +60,25 @@ namespace Game8
             controller = new Controller();
 
             // add all the necessary sprites
-            this.background = Content.Load<Texture2D>("beach");
-            Texture2D avatar_img = Content.Load<Texture2D>("coconut");
+            this.background = Content.Load<Texture2D>("NewBackground");
+            Texture2D avatar_img = Content.Load<Texture2D>("charmander_grid2");
             Texture2D block_img = Content.Load<Texture2D>("crab");
             Texture2D coconut_img = Content.Load<Texture2D>("coconut");
-            
+            Texture2D palm_img = Content.Load<Texture2D>("palm");
+
+            font = Content.Load<SpriteFont>("Font");
+
             //add the objects with their texture
-            avatar = new Avatar(GraphicsDevice, avatar_img);
-            coco = new Items(coconut_img, 1);
-            crab = new Obstacles(block_img, 2);
+            avatar = new Avatar(GraphicsDevice, avatar_img, 1.5);
+            coco = new Items(coconut_img, 1, 0.3);
             allItems.Add(coco);
-            allObstacles.Add(new Obstacles(block_img, 2));
+            allObstacles.Add(new Obstacles(block_img, 2, 0.3));
+            allObstacles.Add(new Obstacles(palm_img, 0.5, 1));
             //collision initialization
             gridSquare = new GridSquares(avatar);
             gridSquare.AddCollidable(allItems[0]);
             gridSquare.AddCollidable(allObstacles[0]);
+            gridSquare.AddCollidable(allObstacles[1]);
 
 
             //add commands to the controller
@@ -139,13 +145,18 @@ namespace Game8
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
             foreach (Items item in allItems)
             {
-                item.Draw(spriteBatch);
+                if (item.isVisible)
+                {
+                    item.Draw(spriteBatch);
+                }
             }
             foreach (Obstacles obstacle in allObstacles)
             {
                 obstacle.Draw(spriteBatch);
             }
             avatar.Draw(spriteBatch);
+            spriteBatch.DrawString(font, "Distance: " + avatar.PlayerPoints, new Vector2(0, 0), Color.Black);
+            spriteBatch.DrawString(font, "Coconuts: " + avatar.PlayerCoconuts, new Vector2(0, 20), Color.Black);
             //Draw legend
             spriteBatch.End();
 

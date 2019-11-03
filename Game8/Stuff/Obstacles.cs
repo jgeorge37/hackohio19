@@ -12,27 +12,31 @@ namespace Game8.Stuff
     class Obstacles : ICollidable
     {
         Texture2D texture;
-        int delayTime;
+        double delayTime;
         double vanishTime;
         bool waiting;
         int currentPosition;
+        double Scale;
 
-        public Obstacles(Texture2D tx, int x)
+        public Obstacles(Texture2D tx, double x, double scale)
         {
             delayTime = x;
             texture = tx;
             currentPosition = 800;
+            Scale = scale;
+
         }
-        public Rectangle BoundingBox => new Rectangle();
+        public Rectangle BoundingBox => new Rectangle(currentPosition, 267 - (int)(texture.Width *Scale), (int)(texture.Width* Scale), (int)(texture.Height * Scale));
         public bool HasResponse => false;
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, new Rectangle(currentPosition, 430, 30, 40), Color.White);
+            spriteBatch.Draw(texture, this.BoundingBox, Color.White);
+
         }
         public void Update(GameTime gameTime)
         {
             // IDK IF THERE ARE BOOLEANS I SHOULD cCHECK
-            if (currentPosition > -40)
+            if (currentPosition > -(int)texture.Width*Scale)
             {
                 currentPosition = currentPosition - 4;
             }

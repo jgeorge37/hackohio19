@@ -16,24 +16,32 @@ namespace Game8.Stuff
         double vanishTime;
         bool waiting;
         int currentPosition;
+        double Scale;
+        bool taken;
 
-        public Items(Texture2D tx, int x)
+        public Items(Texture2D tx, int x, double scale)
         {
             delayTime = x;
             texture = tx;
             currentPosition = 800;
             waiting = false;
+            Scale = scale;
+            taken = false;
         }
-        public Rectangle BoundingBox => new Rectangle();
+        public Rectangle BoundingBox => new Rectangle(currentPosition, 240 - (int)(texture.Width * Scale), (int)(texture.Width * Scale), (int)(texture.Height * Scale));
         public bool HasResponse => true;
+        public bool isVisible => !taken;
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, new Rectangle(currentPosition, 240, 40, 40), Color.White);
+            if (!taken)
+            {
+                spriteBatch.Draw(texture, this.BoundingBox, Color.White);
+            }
         }
         public void Update(GameTime gameTime)
         {
             // IDK IF THERE ARE BOOLEANS I SHOULD cCHECK
-            if (currentPosition > -40)
+            if (currentPosition > -texture.Width)
             {
                 currentPosition = currentPosition - 4;
             }
@@ -48,13 +56,13 @@ namespace Game8.Stuff
                 {
                     waiting = true;
                     vanishTime = gameTime.TotalGameTime.TotalSeconds;
+                    taken = false;
                 }
             }
-
         }
         public void CollisionResponse(bool isItem)
         {
-
+            taken = true;
         }
     }
 }

@@ -16,18 +16,24 @@ namespace Game8.Stuff
         bool isJumping;
         int heightJumped;
         int maxJumpHeight;
+        double Scale;
         Animation Travel;
         Animation CurrentAnimation;
         bool isDead;
         Texture2D texture;
+        public int PlayerPoints { get; set; }
+        public int PlayerCoconuts { get; set; }
 
-        public Avatar(GraphicsDevice graphicsDevice, Texture2D tx)
+        public Avatar(GraphicsDevice graphicsDevice, Texture2D tx, double scale)
         {
             isJumping = false;
             heightJumped = 0;
-            maxJumpHeight = 100;
+            maxJumpHeight = 170;
             isDead = false;
             texture = tx;
+            Scale = scale;
+            PlayerPoints = 0;
+            PlayerCoconuts = 0;
 
             /*
             THIS IS STUFF FROM THE EXAMPLE THAT IDK HOW TO DEAL WITH
@@ -52,7 +58,7 @@ namespace Game8.Stuff
 
         }
 
-        public Rectangle BoundingBox => new Rectangle();
+        public Rectangle BoundingBox => new Rectangle(30, 348 - (int)(texture.Width * Scale) - heightJumped, (int)(texture.Width * Scale), (int)(texture.Height * Scale));
         public bool HasResponse => true;
         public void Jump()
         {
@@ -65,7 +71,7 @@ namespace Game8.Stuff
             {
                 if (heightJumped < maxJumpHeight)
                 {
-                    heightJumped = heightJumped + 10;
+                    heightJumped = heightJumped + 7;
                 }
                 else
                 {
@@ -74,16 +80,20 @@ namespace Game8.Stuff
             }
             else if (!isJumping && heightJumped > 0)
             {
-                heightJumped = heightJumped - 10;
+                heightJumped = heightJumped - 5;
             }
 
             CurrentAnimation = Travel;
             CurrentAnimation.Update(gametime);
+            if((int)gametime.TotalGameTime.TotalMilliseconds % 100 == 0)
+            {
+                this.PlayerPoints = PlayerPoints + 10;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, new Vector2(30, 200), color : Color.White, effects: SpriteEffects.FlipHorizontally, scale: new Vector2(30, 40));
+            spriteBatch.Draw(texture, this.BoundingBox, Color.White);
         }
 
         public void CollisionResponse(bool isItem)
@@ -91,6 +101,10 @@ namespace Game8.Stuff
             if (!isItem)
             {
                 isDead = true;
+            }
+            else
+            {
+                this.PlayerCoconuts =  this.PlayerCoconuts + 1;
             }
         }
         public bool IsDead()

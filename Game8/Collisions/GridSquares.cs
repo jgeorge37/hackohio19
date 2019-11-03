@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Game8.Stuff;
+using System.Diagnostics;
 
 namespace Game8.Collisions
 {
@@ -39,8 +40,8 @@ namespace Game8.Collisions
                 {
                     Avatar.CollisionResponse(true);
                     items[j].CollisionResponse(false);
-                    //Debug.WriteLine("2 moving objects collided");
-                    items.RemoveAt(j);
+                    Debug.WriteLine("collide with item");
+                    //items.RemoveAt(j);
                 }
             }
             //check against all obstacles
@@ -48,8 +49,8 @@ namespace Game8.Collisions
             {
                 if (obstacles[j].BoundingBox.Intersects(Avatar.BoundingBox))
                 {
-                    Avatar.CollisionResponse(true);
-                    //Debug.WriteLine("1 moving object collided with nonmoving");
+                    Avatar.CollisionResponse(false);
+                    //Debug.WriteLine("collide with obstacle");
                     //obstacles.RemoveAt(j);
                 }
             }
