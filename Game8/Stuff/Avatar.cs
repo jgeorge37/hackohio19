@@ -14,9 +14,10 @@ namespace Game8.Stuff
     class Avatar : ICollidable
     {
         bool isJumping;
-        bool charizardIsFlying;
+        bool charizardCanFly;
         int heightJumped;
         int maxJumpHeight;
+        int velocity;
         double Scale;
         Animation Travel;
         Animation CurrentAnimation;
@@ -42,6 +43,7 @@ namespace Game8.Stuff
             Scale = scale;
             PlayerPoints = 0;
             PlayerCoconuts = 0;
+            velocity = 0;
 
             /*
             THIS IS STUFF FROM THE EXAMPLE THAT IDK HOW TO DEAL WITH
@@ -66,37 +68,54 @@ namespace Game8.Stuff
 
         }
 
-        public Rectangle BoundingBox => new Rectangle(30, 348 - (int)(currentTexture.Width * Scale) - heightJumped, (int)(currentTexture.Width * Scale), (int)(currentTexture.Height * Scale));
+        public Rectangle BoundingBox => new Rectangle(30, 348 - (int)(currentTexture.Height * Scale) - heightJumped, (int)(currentTexture.Width * Scale), (int)(currentTexture.Height * Scale));
         public bool HasResponse => true;
         public void Jump()
         {
             isJumping = true;
         }
-
+        public void Fly(bool up)
+        {
+            if (up)
+            {
+                this.heightJumped = heightJumped - 5;
+            }
+            else
+            {
+                this.heightJumped = heightJumped + 5;
+            }
+        }
         public void Update(GameTime gametime)
         {
-            if (isJumping)
+            if (charizardCanFly && isJumping)
             {
-                if (heightJumped < maxJumpHeight)
+                Fly()
+            }
+            else
+            {
+                if (isJumping)
                 {
-                    heightJumped = heightJumped + 7;
+                    if (heightJumped < maxJumpHeight)
+                    {
+                        velocity = 7;
+                    }
+                    else
+                    {
+                        isJumping = false;
+                    }
                 }
-                else
+                else if (!isJumping && heightJumped > 0)
                 {
-                    isJumping = false;
+                    velocity = - 5;
                 }
             }
-            else if (!isJumping && heightJumped > 0)
-            {
-                heightJumped = heightJumped - 5;
-            }
-
             CurrentAnimation = Travel;
             CurrentAnimation.Update(gametime);
-            if((int)gametime.TotalGameTime.TotalMilliseconds % 100 == 0)
+            if ((int)gametime.TotalGameTime.TotalMilliseconds % 100 == 0)
             {
                 this.PlayerPoints = PlayerPoints + 10;
             }
+            heightJumped = heightJumped + velocity;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -104,12 +123,17 @@ namespace Game8.Stuff
             spriteBatch.Draw(currentTexture, this.BoundingBox, Color.White);
         }
 
-        public void attemptUpgrade(){
-          if(currentTexture == texture1 && this.PlayerCoconuts >= 30){
-            currentTexture = texture2;
-          } else if (currentTexture == texture2 && this.PlayerCoconuts >= 70){
-            currentTexture = texture3;
-          }
+        public void attemptUpgrade()
+        {
+            if (currentTexture == texture1 && this.PlayerCoconuts >= 20)
+            {
+                currentTexture = texture2;
+            }
+            else if (currentTexture == texture2 && this.PlayerCoconuts >= 30)
+            {
+                currentTexture = texture3;
+                charizardCanFly = true;
+            }
         }
 
         public void CollisionResponse(bool isItem)
@@ -120,7 +144,7 @@ namespace Game8.Stuff
             }
             else
             {
-                this.PlayerCoconuts =  this.PlayerCoconuts + 1;
+                this.PlayerCoconuts = this.PlayerCoconuts + 1;
                 this.attemptUpgrade();
 
             }
