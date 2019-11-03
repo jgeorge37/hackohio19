@@ -88,7 +88,7 @@ namespace Game8
 
         public void Draw(SpriteBatch spriteBatch)
         {
-					spriteBatch.Draw(texture, new Rectangle(30, 200, 30, 40), Color.White);
+					spriteBatch.Draw(texture, new Rectangle(30, 430-heightJumped, 30, 40), Color.White);
         }
 
         public void CollisionResponse(bool isItem)
