@@ -56,10 +56,6 @@ namespace Game8.Stuff
         public bool HasResponse => true;
         public void Jump()
         {
-            if (!isJumping)
-            {
-
-            }
             isJumping = true;
         }
 

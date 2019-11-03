@@ -57,11 +57,6 @@ namespace Game8
             spriteBatch = new SpriteBatch(GraphicsDevice);
             controller = new Controller();
 
-            //add commands to the controller
-            controller.AddKey(Keys.Q, new QuitCommand(this));
-            controller.AddKey(Keys.Space, new JumpCommand(avatar));
-            controller.AddKey(Keys.R, new ResetCommand(this));
-
             // add all the necessary sprites
             this.background = Content.Load<Texture2D>("beach");
             Texture2D avatar_img = Content.Load<Texture2D>("coconut");
@@ -78,6 +73,12 @@ namespace Game8
             gridSquare = new GridSquares(avatar);
             gridSquare.AddCollidable(allItems[0]);
             gridSquare.AddCollidable(allObstacles[0]);
+
+
+            //add commands to the controller
+            controller.AddKey(Keys.Q, new QuitCommand(this));
+            controller.AddKey(Keys.Space, new JumpCommand(avatar));
+            controller.AddKey(Keys.R, new ResetCommand(this));
 
         }
 
@@ -109,6 +110,7 @@ namespace Game8
         {
 
             // TODO: Add your update logic here
+            controller.Update();
             foreach (Items item in allItems)
             {
                 item.Update(gameTime);

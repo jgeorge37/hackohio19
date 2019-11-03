@@ -16,7 +16,6 @@ namespace Game8
         Dictionary<Keys, ICommand> keys;
         public Controller()
         {
-            now = Keyboard.GetState();
             past = Keyboard.GetState();
             keys = new Dictionary<Keys, ICommand>();
         }
