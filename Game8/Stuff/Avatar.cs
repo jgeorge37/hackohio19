@@ -14,23 +14,31 @@ namespace Game8.Stuff
     class Avatar : ICollidable
     {
         bool isJumping;
+        bool charizardIsFlying;
         int heightJumped;
         int maxJumpHeight;
         double Scale;
         Animation Travel;
         Animation CurrentAnimation;
         bool isDead;
-        Texture2D texture;
+        Texture2D texture1;
+        Texture2D texture2;
+        Texture2D texture3;
+        Texture2D currentTexture;
         public int PlayerPoints { get; set; }
         public int PlayerCoconuts { get; set; }
 
-        public Avatar(GraphicsDevice graphicsDevice, Texture2D tx, double scale)
+        public Avatar(GraphicsDevice graphicsDevice, Texture2D tx1, Texture2D tx2, Texture2D tx3, double scale)
         {
             isJumping = false;
+            //charizardIsFlying = false;
             heightJumped = 0;
             maxJumpHeight = 170;
             isDead = false;
-            texture = tx;
+            texture1 = tx1;
+            currentTexture = texture1;
+            texture2 = tx2;
+            texture3 = tx3;
             Scale = scale;
             PlayerPoints = 0;
             PlayerCoconuts = 0;
@@ -58,7 +66,7 @@ namespace Game8.Stuff
 
         }
 
-        public Rectangle BoundingBox => new Rectangle(30, 348 - (int)(texture.Width * Scale) - heightJumped, (int)(texture.Width * Scale), (int)(texture.Height * Scale));
+        public Rectangle BoundingBox => new Rectangle(30, 348 - (int)(currentTexture.Width * Scale) - heightJumped, (int)(currentTexture.Width * Scale), (int)(currentTexture.Height * Scale));
         public bool HasResponse => true;
         public void Jump()
         {
@@ -96,6 +104,14 @@ namespace Game8.Stuff
             spriteBatch.Draw(texture, this.BoundingBox, Color.White);
         }
 
+        public void attemptUpgrade(){
+          if(currentTexture == texture1 && this.PlayerCoconuts >= 30){
+            currentTexture = texture2;
+          } else if (currentTexture == texture2 && this.PlayerCoconuts >= 70){
+            currentTexture = texture3;
+          }
+        }
+
         public void CollisionResponse(bool isItem)
         {
             if (!isItem)
@@ -105,6 +121,8 @@ namespace Game8.Stuff
             else
             {
                 this.PlayerCoconuts =  this.PlayerCoconuts + 1;
+                this.attemptUpgrade();
+
             }
         }
         public bool IsDead()
