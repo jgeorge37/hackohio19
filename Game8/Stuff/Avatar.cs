@@ -8,6 +8,7 @@ using Game8.Commands;
 using Game8.Collisions;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace Game8.Stuff
 {
@@ -44,6 +45,7 @@ namespace Game8.Stuff
             PlayerPoints = 0;
             PlayerCoconuts = 0;
             velocity = 0;
+            charizardCanFly = false;
 
             /*
             THIS IS STUFF FROM THE EXAMPLE THAT IDK HOW TO DEAL WITH
@@ -78,19 +80,31 @@ namespace Game8.Stuff
         {
             if (charizardCanFly)
             {
-                if(heightJumped == 0 && isJumping)
+                Debug.WriteLine("isJumping: " + isJumping);
+
+                if (heightJumped ==0 && isJumping)
                 {
                     velocity = 6;
                     isJumping = false;
-                }else if(heightJumped == 348 - (int)(currentTexture.Height * Scale) && isJumping)
+                    Debug.WriteLine("1. velocity is " + velocity);
+                }
+                else if(heightJumped == 348 - (int)(currentTexture.Height * Scale) && isJumping)
                 {
                     velocity = -6;
                     isJumping = false;
-                }else if(heightJumped == 0 || heightJumped == 348 - (int)(currentTexture.Height * Scale))
+                    Debug.WriteLine("2. velocity is " + velocity);
+                }
+                else if(heightJumped < 0)
                 {
                     velocity = 0;
+                    heightJumped = 0;
+                }else if(heightJumped > 348 - (int)(currentTexture.Height * Scale))
+                {
+                    velocity = 0;
+                    heightJumped = 348 - (int)(currentTexture.Height * Scale);
                 }
                 heightJumped = heightJumped + velocity;
+                Debug.WriteLine("3. height is " + heightJumped);
             }
             else
             {
@@ -133,6 +147,7 @@ namespace Game8.Stuff
             {
                 currentTexture = texture3;
                 charizardCanFly = true;
+                heightJumped = 0;
             }
         }
 
