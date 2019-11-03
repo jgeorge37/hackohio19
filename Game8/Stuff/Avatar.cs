@@ -101,7 +101,7 @@ namespace Game8.Stuff
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, this.BoundingBox, Color.White);
+            spriteBatch.Draw(currentTexture, this.BoundingBox, Color.White);
         }
 
         public void attemptUpgrade(){
